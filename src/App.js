@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./styles.css";
+import { BiSearchAlt } from "react-icons/bi";
 
 function App() {
+  const [input, setInput] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className="title">Buscador CEP</h1>
+      <div className="containerInput">
+        <input type="text" placeholder="Digite seu CEP..." />
+        <button className="buttonSearch">
+          <BiSearchAlt size={25} color="#fff" />
+        </button>
+      </div>
+
+      <main className="main">
+        <h2>CEP: 79003222 </h2>
+        <span> Rua Só testando</span>
+        <span> Complemento: Algum complemento</span>
+        <span> Bairro: Vila Rosa</span>
+        <span>Campo Grande - MS</span>
+      </main>
     </div>
   );
 }

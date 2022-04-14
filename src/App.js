@@ -16,6 +16,7 @@ function App() {
     try {
       const response = await api.get(`${input}/json`);
       setSaveCep(response.data);
+      setInput("");
     } catch {
       console.error("Erro ao buscar CEP.");
       setInput("");
@@ -38,16 +39,17 @@ function App() {
           <BiSearchAlt size={25} color="#fff" />
         </button>
       </div>
-
-      <main className="main">
-        <h2>CEP: {saveCep.cep} </h2>
-        <span> {saveCep.logradouro}</span>
-        <span>{saveCep.complemento}</span>
-        <span>{saveCep.bairro}</span>
-        <span>
-          {saveCep.localidade} - {saveCep.uf}
-        </span>
-      </main>
+      {Object.keys(saveCep).length > 0 && (
+        <main className="main">
+          <h2>CEP: {saveCep.cep} </h2>
+          <span> {saveCep.logradouro}</span>
+          <span>Complemento: {saveCep.complemento}</span>
+          <span>Bairro: {saveCep.bairro}</span>
+          <span>
+            {saveCep.localidade} - {saveCep.uf}
+          </span>
+        </main>
+      )}
     </div>
   );
 }
